@@ -87,6 +87,8 @@ Then in Hostinger File Manager:
 If you prefer Docker Manager, this repo now includes:
 
 - `docker-compose.yml`
+- `docker-compose.yaml`
+- `compose.yaml`
 - `Dockerfile`
 
 ### Steps
@@ -120,6 +122,15 @@ If yes, deployment is successful.
 ---
 
 ## Common problems (simple fixes)
+
+
+- **Hostinger Docker Manager error: `No Docker compose files found`**
+  - Docker Manager did clone your repo, but it could not detect a compose file in the selected branch/root folder.
+  - Fix checklist:
+    1. In Docker Manager, select the branch that contains your latest files (for this repo: `work` unless you merged to `main`).
+    2. Keep compose files at the repository root (not inside a subfolder).
+    3. This repo now includes all common names Hostinger detects: `docker-compose.yml`, `docker-compose.yaml`, and `compose.yaml`.
+    4. Re-deploy after confirming GitHub shows those files at the repo root.
 
 - **Hostinger Docker Manager error: `fatal: could not read Username for 'https://github.com': terminal prompts disabled`**
   - This happens when Docker Manager tries to clone a **private** GitHub repository.
