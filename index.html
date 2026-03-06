@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Habit Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="brand">
+        <h1>GridMyHabits</h1>
+        <p>Track anything with beautiful grids</p>
+      </header>
+
+      <section class="workspace">
+        <aside class="habit-panel" aria-label="Habit list panel">
+          <h2>Habits</h2>
+          <form id="habit-form" class="habit-form">
+            <input id="habit-input" name="habit" type="text" placeholder="Add a habit (e.g. Reading)" maxlength="40" required />
+            <button type="submit">Add</button>
+          </form>
+          <ul id="habit-list" class="habit-list"></ul>
+        </aside>
+
+        <section class="tracker-card" aria-live="polite">
+          <div class="tracker-header">
+            <h2 id="habit-title">Select a habit</h2>
+            <button id="mark-today" class="mark-button" type="button">Mark Today</button>
+          </div>
+
+          <div class="grid-container">
+            <div id="month-labels" class="month-labels"></div>
+            <div class="grid-body">
+              <div class="day-labels">
+                <span>Mon</span>
+                <span>Wed</span>
+                <span>Fri</span>
+                <span>Sun</span>
+              </div>
+              <div id="habit-grid" class="habit-grid" role="grid" aria-label="Habit completion grid"></div>
+            </div>
+          </div>
+
+          <footer class="stats-row">
+            <div>
+              <strong id="total-days">0</strong>
+              <span>Total days</span>
+            </div>
+            <div>
+              <strong id="current-streak">0</strong>
+              <span>Current streak</span>
+            </div>
+            <div>
+              <strong id="best-streak">0</strong>
+              <span>Best streak</span>
+            </div>
+          </footer>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
