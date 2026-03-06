@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Habit Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <h1>GridMyLife</h1>
+        <p>Track anything with beautiful grids</p>
+      </header>
+
+      <section class="add-habit-panel" aria-label="Add habit">
+        <form id="habit-form">
+          <label for="habit-name" class="sr-only">Habit name</label>
+          <input
+            id="habit-name"
+            name="habit-name"
+            placeholder="Add a habit (e.g. Working out)"
+            maxlength="45"
+            required
+          />
+          <button type="submit">Add Habit</button>
+        </form>
+      </section>
+
+      <section id="habits" class="habits" aria-live="polite"></section>
+    </main>
+
+    <template id="habit-template">
+      <article class="habit-card">
+        <div class="habit-header">
+          <h2 class="habit-title"></h2>
+          <button class="mark-today" type="button">Mark Today</button>
+        </div>
+
+        <div class="grid-wrap">
+          <div class="months-row"></div>
+          <div class="grid-row">
+            <div class="weekday-labels"></div>
+            <div class="cells-scroll">
+              <div class="cells" role="grid"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="habit-footer">
+          <div class="stats">
+            <div>
+              <strong class="total-days">0</strong>
+              <span>Total Days</span>
+            </div>
+            <div>
+              <strong class="current-streak">0</strong>
+              <span>Current Streak</span>
+            </div>
+            <div>
+              <strong class="best-streak">0</strong>
+              <span>Best Streak</span>
+            </div>
+          </div>
+          <label>
+            <span class="goal-label">Streak Goal</span>
+            <select class="goal-select">
+              <option value="3">3× per week</option>
+              <option value="4">4× per week</option>
+              <option value="5">5× per week</option>
+              <option value="7">Daily</option>
+            </select>
+          </label>
+        </div>
+      </article>
+    </template>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
