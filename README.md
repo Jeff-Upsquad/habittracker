@@ -97,6 +97,15 @@ If yes, deployment is successful.
 
 ## Common problems (simple fixes)
 
+- **Hostinger Docker Manager error: `fatal: could not read Username for 'https://github.com': terminal prompts disabled`**
+  - This happens when Docker Manager tries to clone a **private** GitHub repository.
+  - This habit tracker is a **static site** (`index.html`, `styles.css`, `app.js`), so you do **not** need Docker Manager.
+  - Easiest fix:
+    1. Go to **Hosting → Manage → File Manager → public_html**.
+    2. Upload `index.html`, `styles.css`, and `app.js` directly (or upload/extract the ZIP).
+    3. Open your domain again.
+  - If you still want Git-based deploy from Docker Manager, make the repo public **or** configure GitHub access token/SSH key in Hostinger first.
+
 - **Page shows old content**
   - Hard refresh with `Ctrl+Shift+R` (Windows) or `Cmd+Shift+R` (Mac).
   - Clear Hostinger cache/CDN if enabled.
