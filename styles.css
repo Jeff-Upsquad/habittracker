@@ -1,0 +1,258 @@
+:root {
+  color-scheme: light;
+  --bg: #f4f4f4;
+  --card: #f7f7f7;
+  --ink: #171717;
+  --muted: #717171;
+  --line: #1c1c1c;
+  --empty: #ececec;
+  --accent: #ffcc2f;
+  --filled: #0f0f0f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.app-shell {
+  width: min(1200px, 100% - 2rem);
+  margin: 2rem auto 3rem;
+}
+
+.brand {
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.brand h1 {
+  margin: 0;
+  font-family: "Space Mono", monospace;
+  font-size: clamp(2rem, 4vw, 4rem);
+  letter-spacing: -0.06em;
+}
+
+.brand p {
+  margin: 0.4rem 0 0;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.workspace {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+}
+
+.habit-panel,
+.tracker-card {
+  border: 3px solid var(--line);
+  border-radius: 28px;
+  background: var(--card);
+}
+
+.habit-panel {
+  padding: 1.25rem;
+}
+
+.habit-panel h2 {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+}
+
+.habit-form {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.habit-form input,
+.habit-form button,
+.mark-button {
+  font: inherit;
+  border: 3px solid var(--line);
+  border-radius: 12px;
+  padding: 0.6rem 0.8rem;
+}
+
+.habit-form input {
+  background: #fff;
+}
+
+.habit-form button,
+.mark-button {
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: var(--filled);
+  color: #fff;
+}
+
+.habit-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+  max-height: 58vh;
+  overflow: auto;
+}
+
+.habit-item {
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.habit-item button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.habit-item.active {
+  border-width: 3px;
+  background: #fffbe9;
+}
+
+.tracker-card {
+  padding: 1.3rem;
+}
+
+.tracker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tracker-header h2 {
+  margin: 0;
+  font-family: "Space Mono", monospace;
+  font-size: clamp(1.25rem, 3vw, 2.2rem);
+}
+
+.grid-container {
+  border: 3px solid var(--line);
+  border-radius: 22px;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.month-labels {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(16px, 1fr);
+  margin-left: 56px;
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  color: #333;
+  min-width: 740px;
+}
+
+.grid-body {
+  display: grid;
+  grid-template-columns: 48px minmax(740px, 1fr);
+  gap: 0.6rem;
+  align-items: start;
+}
+
+.day-labels {
+  display: grid;
+  grid-template-rows: repeat(7, 22px);
+  align-items: center;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.day-labels span {
+  grid-column: 1;
+}
+
+.day-labels span:nth-child(1) { grid-row: 1; }
+.day-labels span:nth-child(2) { grid-row: 3; }
+.day-labels span:nth-child(3) { grid-row: 5; }
+.day-labels span:nth-child(4) { grid-row: 7; }
+
+.habit-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 22px);
+  grid-auto-columns: 22px;
+  gap: 6px;
+}
+
+.cell {
+  width: 22px;
+  height: 22px;
+  border: 3px solid #262626;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.cell.done {
+  background: var(--filled);
+}
+
+.cell.today {
+  background: var(--accent);
+}
+
+.cell.future {
+  border-color: #d8d8d8;
+  background: transparent;
+}
+
+.stats-row {
+  margin-top: 1.2rem;
+  border-top: 2px solid #dedede;
+  padding-top: 1rem;
+  display: flex;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+}
+
+.stats-row div {
+  min-width: 120px;
+}
+
+.stats-row strong {
+  display: block;
+  font-family: "Space Mono", monospace;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.stats-row span {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+@media (max-width: 920px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .habit-panel {
+    order: 2;
+  }
+}
