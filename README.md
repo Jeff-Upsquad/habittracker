@@ -2,93 +2,136 @@
 
 A lightweight, static web app for tracking multiple habits in a grid-style UI.
 
-## Project files
+If you're **not a programmer**, don't worry — you can still publish this site by following the click-by-click steps below.
+
+---
+
+## What this app does
+
+- Lets you create and track **multiple habits**.
+- Click a square (or **Mark Today**) to mark completion.
+- Shows total days and streak stats.
+- Saves your data in your browser (`localStorage`).
+
+> Important: because data is stored in the browser, each browser/device keeps its own data.
+
+---
+
+## Files you need to upload
+
+Only these 3 files are required for the website to run:
 
 - `index.html`
 - `styles.css`
 - `app.js`
 
-Because this app is fully static (no backend), it can be hosted on Hostinger Shared Hosting using File Manager or FTP.
+---
+
+## Easiest path (for non-programmers): Hostinger File Manager
+
+### Step 1: Open your Hostinger panel
+1. Log in to Hostinger.
+2. Open **hPanel**.
+3. Go to **Hosting** → **Manage** (for your domain).
+
+### Step 2: Open your website folder
+1. Click **File Manager**.
+2. Open folder `public_html`.
+
+### Step 3: Remove default page (if needed)
+If you see a default file like `index.php`, rename it to `index_old.php` (or delete it).
+
+### Step 4: Upload app files
+Upload these files into `public_html`:
+
+- `index.html`
+- `styles.css`
+- `app.js`
+
+After upload, all 3 files should be directly inside `public_html` (not inside another nested folder).
+
+### Step 5: Turn on SSL
+1. In hPanel, open **SSL**.
+2. Activate SSL for your domain.
+3. Enable **Force HTTPS**.
+
+### Step 6: Open your site
+Visit:
+
+- `https://yourdomain.com`
+
+If everything worked, you should see the GridMyHabits page.
 
 ---
 
-## Deploy to Hostinger (Shared Hosting)
+## Alternative: Upload by ZIP in File Manager
 
-### 1) Prepare the upload package
-From this project directory, create a clean zip that includes only runtime files:
+If uploading one-by-one is annoying, zip the files first.
+
+Create zip (on this project folder):
 
 ```bash
 cd /workspace/habittracker
 zip -r habittracker-deploy.zip index.html styles.css app.js
 ```
 
-### 2) Point your domain to Hostinger
-In **hPanel**:
-
-1. Open **Domains** and ensure your domain uses Hostinger nameservers (or proper A record).
-2. Wait for DNS propagation if you just changed records.
-
-### 3) Upload the app files
-In **hPanel → Hosting → Manage → File Manager**:
-
-1. Go to `public_html/` (or your addon domain folder).
-2. Upload `habittracker-deploy.zip`.
-3. Extract it.
-4. Confirm these files are in the web root:
-   - `index.html`
-   - `styles.css`
-   - `app.js`
-
-> If there is an old `index.php`, remove or rename it so `index.html` is served.
-
-### 4) Enable SSL (recommended)
-In **hPanel → SSL**:
-
-1. Activate SSL for the domain.
-2. Enable **Force HTTPS**.
-
-This ensures browser storage (`localStorage`) works consistently in production and users see a secure site.
-
-### 5) Verify in browser
-Open:
-
-- `https://yourdomain.com/`
-
-Check:
-
-- App loads with styling.
-- You can add multiple habits.
-- `Mark Today` toggles today’s cell.
-- Refresh preserves data (localStorage).
+Then in Hostinger File Manager:
+1. Upload `habittracker-deploy.zip` to `public_html`.
+2. Extract it.
+3. Confirm the 3 files are in `public_html`.
 
 ---
 
-## Optional: Deploy with FTP (instead of File Manager)
+## How to check your app is working
 
-Use any FTP client (FileZilla):
+After opening your domain:
 
-- Host: your FTP hostname from Hostinger
-- User / Password: from hPanel
-- Port: 21 (FTP) or 22 (SFTP)
-- Remote path: `public_html/`
+1. Add a habit (example: `Reading`).
+2. Click **Mark Today**.
+3. Refresh the page.
+4. Confirm the habit and marked day are still there.
+
+If yes, deployment is successful.
+
+---
+
+## Common problems (simple fixes)
+
+- **Page shows old content**
+  - Hard refresh with `Ctrl+Shift+R` (Windows) or `Cmd+Shift+R` (Mac).
+  - Clear Hostinger cache/CDN if enabled.
+
+- **No design / broken layout**
+  - `styles.css` is missing or not in the same folder as `index.html`.
+
+- **Buttons do nothing**
+  - `app.js` is missing or not in the same folder as `index.html`.
+
+- **Domain not opening**
+  - DNS may still be propagating (can take a few hours).
+
+- **Still seeing Hostinger default page**
+  - Old `index.php` is still taking priority. Rename/delete it.
+
+---
+
+## Optional: FTP upload (advanced)
+
+Use FileZilla if you prefer FTP/SFTP:
+
+- Host: from Hostinger hPanel
+- Username/password: from Hostinger hPanel
+- Port: `21` (FTP) or `22` (SFTP)
+- Upload destination: `public_html`
 
 Upload `index.html`, `styles.css`, and `app.js`.
 
 ---
 
-## Troubleshooting
+## Updating your live site later
 
-- **Blank page / missing styles**: confirm `styles.css` and `app.js` are in the same folder as `index.html`.
-- **Old version still showing**: hard refresh (`Ctrl+Shift+R`) and clear Hostinger cache/CDN cache if enabled.
-- **Domain not loading**: verify nameservers / DNS records and wait for propagation.
-- **Permission issues**: set files to `644`, folders to `755`.
+When you edit your app in future:
 
----
-
-## Update workflow (after initial launch)
-
-When you change the app locally:
-
-1. Re-upload updated `index.html`, `styles.css`, `app.js`.
+1. Re-upload changed files to `public_html`.
 2. Hard refresh the browser.
-3. If caching is enabled, purge cache.
+3. If cache is enabled, purge cache.
