@@ -82,6 +82,30 @@ Then in Hostinger File Manager:
 
 ---
 
+## Deploy with Hostinger **Docker Manager** (using GitHub repo)
+
+If you prefer Docker Manager, this repo now includes:
+
+- `docker-compose.yml`
+- `Dockerfile`
+
+### Steps
+1. Push this project to GitHub.
+2. In Hostinger, open **VPS → Docker Manager → Compose**.
+3. Connect your repository.
+4. Select branch `work` (or your main branch).
+5. Deploy.
+
+### Important
+- If your GitHub repo is **private**, Docker Manager needs GitHub credentials (token/SSH key) to clone it.
+- If credentials are not configured, you will get this error:
+  - `fatal: could not read Username for 'https://github.com': terminal prompts disabled`
+- Easy workaround: make the repository public, then redeploy.
+
+After deploy, open your app on the mapped port (`3000` by default in `docker-compose.yml`).
+
+---
+
 ## How to check your app is working
 
 After opening your domain:
